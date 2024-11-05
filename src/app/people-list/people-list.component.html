@@ -1,0 +1,31 @@
+<div class="mt-4">
+    <h2>People List</h2>
+    <div class="form-group">
+        <input type="number" class="form-control" [(ngModel)]="searchId" placeholder="Enter ID to search" />
+        <button class="btn btn-secondary mt-2" (click)="refreshPage()">Refresh</button>
+    </div>
+
+    <div *ngIf="searchedPerson" class="alert alert-info">
+        <h3>Searched Person:</h3>
+        <p>ID: {{ searchedPerson.id }}</p>
+        <p>First Name: {{ searchedPerson.firstName }}</p>
+        <p>Last Name: {{ searchedPerson.lastName }}</p>
+    </div>
+
+    <table *ngIf="!searchedPerson" class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let person of people">
+                <td>{{ person.id }}</td>
+                <td>{{ person.firstName }}</td>
+                <td>{{ person.lastName }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
